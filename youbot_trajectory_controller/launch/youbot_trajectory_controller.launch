@@ -1,0 +1,3 @@
+<launch>
+<node pkg="wolves_trajectory_controller" type="youbot_trajectory_controller" name="youbot_trajectory_controller" output="screen"/>
+</launch>
