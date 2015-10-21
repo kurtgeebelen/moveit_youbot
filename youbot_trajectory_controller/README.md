@@ -1,10 +1,10 @@
-youBot Trajectory Controller
+youbot_trajectory_controller
 =============
 
 
 Introduction
 ------------------
-The package contains a modified controller to interact with my moveIt controller manager which is also available in my repository.
+This package contains a modified controller to be called by the moveIt controller manager of the KUKA youBot.
 
 
 Usage
@@ -18,4 +18,3 @@ Dependencies
 * ROS-Environment
 * moveIt-Configuration
 * moveIt-Controller-Manager
-

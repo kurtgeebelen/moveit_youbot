@@ -1,4 +1,4 @@
-youBot moveIt Controller Manager
+youbot_moveit_controller_manager
 =============
 
 
@@ -11,4 +11,3 @@ Dependencies
 ------------------
 * ROS-Environment
 * moveIt-Configuration
-
