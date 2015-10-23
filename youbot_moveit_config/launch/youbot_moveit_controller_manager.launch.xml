@@ -1,3 +1,5 @@
 <launch>
+  <param name="moveit_controller_manager" value="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
 
+  <rosparam file="$(find youbot_moveit_config)/config/controllers.yaml"/>
 </launch>
