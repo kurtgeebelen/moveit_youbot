@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(wolves_moveit_controller_manager)
+project(youbot_moveit_controller_manager)
 
 if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)

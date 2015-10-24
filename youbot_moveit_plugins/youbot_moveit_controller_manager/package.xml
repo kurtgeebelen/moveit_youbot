@@ -1,5 +1,5 @@
 <package>
-  <name>wolves_moveit_controller_manager</name>
+  <name>youbot_moveit_controller_manager</name>
   <version>0.0.1</version>
   <description>A MoveIT controller manager plugin for the KUKA youBot.</description>
   <maintainer email="arne.hitzmann@gmail.com">Arne Hitzmann</maintainer>
