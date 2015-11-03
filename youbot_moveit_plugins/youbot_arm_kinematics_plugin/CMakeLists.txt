@@ -20,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
   pr2_controllers_msgs
 )
 
-find_package(Eigen REQUIRED)
+find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED thread)
 
 
