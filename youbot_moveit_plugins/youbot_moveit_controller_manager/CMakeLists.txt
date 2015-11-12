@@ -12,7 +12,9 @@ link_directories(${Boost_LIBRARY_DIRS})
 find_package(catkin COMPONENTS
   moveit_core
   pluginlib
+  actionlib
   roscpp
+  control_msgs
   REQUIRED)
 
 include_directories(${catkin_INCLUDE_DIRS})
