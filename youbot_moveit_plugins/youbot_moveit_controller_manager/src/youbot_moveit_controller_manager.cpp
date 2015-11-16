@@ -32,6 +32,7 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
+/* Author: Ioan Sucan */
 /* Author: Arne Hitzmann */
 
 #include <ros/ros.h>
