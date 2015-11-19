@@ -122,7 +122,7 @@ void place(moveit::planning_interface::MoveGroup &group)
   moveit_msgs::Constraints constr;
   constr.orientation_constraints.resize(1);
   moveit_msgs::OrientationConstraint &ocm = constr.orientation_constraints[0];
-  ocm.link_name = "r_wrist_roll_link";
+  ocm.link_name = "arm1_palm_link";
   ocm.header.frame_id = p.header.frame_id;
   ocm.orientation.x = 0.0;
   ocm.orientation.y = 0.0;
@@ -140,7 +140,7 @@ void place(moveit::planning_interface::MoveGroup &group)
 
 int main(int argc, char **argv)
 {
-  ros::init (argc, argv, "right_arm_pick_place");
+  ros::init (argc, argv, "arm_1_pick_place");
   ros::AsyncSpinner spinner(1);
   spinner.start();
 
@@ -150,7 +150,7 @@ int main(int argc, char **argv)
 
   ros::WallDuration(1.0).sleep();
 
-  moveit::planning_interface::MoveGroup group("right_arm");
+  moveit::planning_interface::MoveGroup group("arm_1");
   group.setPlanningTime(45.0);
 
   moveit_msgs::CollisionObject co;
@@ -199,11 +199,11 @@ int main(int argc, char **argv)
   co.id = "part";
   co.operation = moveit_msgs::CollisionObject::REMOVE;
   pub_co.publish(co);
-  
+
   moveit_msgs::AttachedCollisionObject aco;
   aco.object = co;
   pub_aco.publish(aco);
-  
+
   co.operation = moveit_msgs::CollisionObject::ADD;
   co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_X] = 0.15;
   co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Y] = 0.1;
