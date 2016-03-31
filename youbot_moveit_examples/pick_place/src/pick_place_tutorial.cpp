@@ -49,9 +49,9 @@ void pick(moveit::planning_interface::MoveGroup &group)
 
   geometry_msgs::PoseStamped p;
   p.header.frame_id = "base_footprint";
-  p.pose.position.x = 0.32;
-  p.pose.position.y = -0.7;
-  p.pose.position.z = 0.5;
+  p.pose.position.x = 0.45;
+  p.pose.position.y = 0.0;
+  p.pose.position.z = 0.06;
   p.pose.orientation.x = 0;
   p.pose.orientation.y = 0;
   p.pose.orientation.z = 0;
@@ -59,8 +59,9 @@ void pick(moveit::planning_interface::MoveGroup &group)
   moveit_msgs::Grasp g;
   g.grasp_pose = p;
 
+
   g.pre_grasp_approach.direction.vector.x = 1.0;
-  g.pre_grasp_approach.direction.header.frame_id = "r_wrist_roll_link";
+  g.pre_grasp_approach.direction.header.frame_id = "arm1_palm_link";
   g.pre_grasp_approach.min_distance = 0.2;
   g.pre_grasp_approach.desired_distance = 0.4;
 
@@ -69,12 +70,12 @@ void pick(moveit::planning_interface::MoveGroup &group)
   g.post_grasp_retreat.min_distance = 0.1;
   g.post_grasp_retreat.desired_distance = 0.25;
 
-  g.pre_grasp_posture.joint_names.resize(1, "r_gripper_joint");
+  g.pre_grasp_posture.joint_names.resize(1, "arm1_palm_link");
   g.pre_grasp_posture.points.resize(1);
   g.pre_grasp_posture.points[0].positions.resize(1);
   g.pre_grasp_posture.points[0].positions[0] = 1;
 
-  g.grasp_posture.joint_names.resize(1, "r_gripper_joint");
+  g.grasp_posture.joint_names.resize(1, "arm1_palm_link");
   g.grasp_posture.points.resize(1);
   g.grasp_posture.points[0].positions.resize(1);
   g.grasp_posture.points[0].positions[0] = 0;
@@ -90,9 +91,9 @@ void place(moveit::planning_interface::MoveGroup &group)
 
   geometry_msgs::PoseStamped p;
   p.header.frame_id = "base_footprint";
-  p.pose.position.x = 0.7;
-  p.pose.position.y = 0.0;
-  p.pose.position.z = 0.5;
+  p.pose.position.x = 0.45;
+  p.pose.position.y = 0.1;
+  p.pose.position.z = 0.1;
   p.pose.orientation.x = 0;
   p.pose.orientation.y = 0;
   p.pose.orientation.z = 0;
@@ -100,16 +101,17 @@ void place(moveit::planning_interface::MoveGroup &group)
   moveit_msgs::PlaceLocation g;
   g.place_pose = p;
 
+
   g.pre_place_approach.direction.vector.z = -1.0;
   g.post_place_retreat.direction.vector.x = -1.0;
   g.post_place_retreat.direction.header.frame_id = "base_footprint";
-  g.pre_place_approach.direction.header.frame_id = "r_wrist_roll_link";
+  g.pre_place_approach.direction.header.frame_id = "arm1_palm_link";
   g.pre_place_approach.min_distance = 0.1;
   g.pre_place_approach.desired_distance = 0.2;
   g.post_place_retreat.min_distance = 0.1;
   g.post_place_retreat.desired_distance = 0.25;
 
-  g.post_place_posture.joint_names.resize(1, "r_gripper_joint");
+  g.post_place_posture.joint_names.resize(1, "arm1_palm_link");
   g.post_place_posture.points.resize(1);
   g.post_place_posture.points[0].positions.resize(1);
   g.post_place_posture.points[0].positions[0] = 1;
@@ -132,7 +134,7 @@ void place(moveit::planning_interface::MoveGroup &group)
   ocm.absolute_y_axis_tolerance = 0.2;
   ocm.absolute_z_axis_tolerance = M_PI;
   ocm.weight = 1.0;
-  //  group.setPathConstraints(constr);
+  group.setPathConstraints(constr);
   group.setPlannerId("RRTConnectkConfigDefault");
 
   group.place("part", loc);
@@ -168,12 +170,12 @@ int main(int argc, char **argv)
   co.primitives[0].type = shape_msgs::SolidPrimitive::BOX;
   co.primitives[0].dimensions.resize(shape_tools::SolidPrimitiveDimCount<shape_msgs::SolidPrimitive::BOX>::value);
   co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_X] = 0.3;
-  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Y] = 0.1;
+  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Y] = 0.03;
   co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Z] = 1.0;
   co.primitive_poses.resize(1);
-  co.primitive_poses[0].position.x = 0.7;
-  co.primitive_poses[0].position.y = -0.4;
-  co.primitive_poses[0].position.z = 0.85;
+  co.primitive_poses[0].position.x = 0.5;
+  co.primitive_poses[0].position.y = 1.0;
+  co.primitive_poses[0].position.z = 0.5;
   co.primitive_poses[0].orientation.w = 1.0;
   pub_co.publish(co);
 
@@ -186,12 +188,12 @@ int main(int argc, char **argv)
 
   // add table
   co.operation = moveit_msgs::CollisionObject::ADD;
-  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_X] = 0.5;
+  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_X] = 0.4;
   co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Y] = 1.5;
-  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Z] = 0.35;
-  co.primitive_poses[0].position.x = 0.7;
+  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Z] = 0.1;
+  co.primitive_poses[0].position.x = 0.55;
   co.primitive_poses[0].position.y = -0.2;
-  co.primitive_poses[0].position.z = 0.175;
+  co.primitive_poses[0].position.z = 0.0;
   pub_co.publish(co);
 
 
@@ -200,18 +202,20 @@ int main(int argc, char **argv)
   co.operation = moveit_msgs::CollisionObject::REMOVE;
   pub_co.publish(co);
 
+
+  co.operation = moveit_msgs::CollisionObject::ADD;
+  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_X] = 0.02;
+  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Y] = 0.02;
+  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Z] = 0.02;
+
+  co.primitive_poses[0].position.x = 0.45;
+  co.primitive_poses[0].position.y = 0.0;
+  co.primitive_poses[0].position.z = 0.06;
+
   moveit_msgs::AttachedCollisionObject aco;
   aco.object = co;
   pub_aco.publish(aco);
 
-  co.operation = moveit_msgs::CollisionObject::ADD;
-  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_X] = 0.15;
-  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Y] = 0.1;
-  co.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Z] = 0.3;
-
-  co.primitive_poses[0].position.x = 0.6;
-  co.primitive_poses[0].position.y = -0.7;
-  co.primitive_poses[0].position.z = 0.5;
   pub_co.publish(co);
 
   // wait a bit for ros things to initialize
