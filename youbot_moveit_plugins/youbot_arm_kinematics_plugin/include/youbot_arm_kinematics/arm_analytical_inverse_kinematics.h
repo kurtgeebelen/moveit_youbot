@@ -16,7 +16,7 @@ class ArmAnalyticalInverseKinematics : public InverseKinematics
 		 * @brief Initialize the solver by providing a urdf::Model and a root and tip name.
 		 * @param robot_model A urdf::Model representation of the youBot robot model
 		 * @param robot_description The XML string that of a urdf::Model which represents the youBot robot model
-		 * @param root_name The root joint name of the arm 
+		 * @param root_name The root joint name of the arm
 		 * @param joint_name The tip joint name of the arm
 		 */
 		ArmAnalyticalInverseKinematics(const urdf::Model &robot_model,

@@ -47,7 +47,7 @@
 
 #include <moveit_msgs/GetPositionFK.h>
 #include <moveit_msgs/GetPositionIK.h>
-#include <moveit_msgs/GetKinematicSolverInfo.h>
+#include <moveit_msgs/KinematicSolverInfo.h>
 #include <moveit_msgs/MoveItErrorCodes.h>
 
 #include <kdl/chainfksolverpos_recursive.hpp>
@@ -135,7 +135,7 @@ class ArmKinematicsPlugin : public kinematics::KinematicsBase
                                 const IKCallbackFn &solution_callback,
                                 moveit_msgs::MoveItErrorCodes &error_code,
                                 const kinematics::KinematicsQueryOptions &options = kinematics::KinematicsQueryOptions()) const;
-		 
+
 		/**
 		 * @brief Given a desired pose of the end-effector, search for the joint angles required to reach it.
 		 * This particular method is intended for "searching" for a solutions by stepping through the redundancy
@@ -154,7 +154,7 @@ class ArmKinematicsPlugin : public kinematics::KinematicsBase
                                 const IKCallbackFn &solution_callback,
                                 moveit_msgs::MoveItErrorCodes &error_code,
                                 const kinematics::KinematicsQueryOptions &options = kinematics::KinematicsQueryOptions()) const;
-		
+
 		/**
 		 * @brief Given a set of joint angles and a set of links, compute their pose
 		 * @param request  - the request contains the joint angles, set of links for which poses are to be computed and a timeout
@@ -206,7 +206,7 @@ class ArmKinematicsPlugin : public kinematics::KinematicsBase
 				const KDL::Frame& ik_pose,
 				moveit_msgs::MoveItErrorCodes& error_code);
 
-    
+
     protected: // variables
 		boost::shared_ptr<InverseKinematics>_ik;
 		boost::shared_ptr<InverseKinematicsSolver> _ik_solver;

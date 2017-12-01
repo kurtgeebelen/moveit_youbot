@@ -92,7 +92,7 @@ namespace moveit_youbot_controller_manager
 
     bool isConnected() const
     {
-      return controller_action_client_;
+      return static_cast<bool>(controller_action_client_);
     }
 
     virtual bool cancelExecution()

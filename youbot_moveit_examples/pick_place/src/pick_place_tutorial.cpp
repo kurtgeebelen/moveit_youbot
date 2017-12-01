@@ -38,11 +38,12 @@
 
 // MoveIt!
 #include <moveit/planning_scene_monitor/planning_scene_monitor.h>
-#include <moveit/move_group_interface/move_group.h>
-#include <shape_tools/solid_primitive_dims.h>
+#include <moveit/move_group_interface/move_group_interface.h>
+//#include <shape_tools/solid_primitive_dims.h>
 
 static const std::string ROBOT_DESCRIPTION="robot_description";
 
+/*
 void pick(moveit::planning_interface::MoveGroup &group)
 {
   std::vector<moveit_msgs::Grasp> grasps;
@@ -139,9 +140,9 @@ void place(moveit::planning_interface::MoveGroup &group)
 
   group.place("part", loc);
 }
-
+*/
 int main(int argc, char **argv)
-{
+{/*
   ros::init (argc, argv, "arm_1_pick_place");
   ros::AsyncSpinner spinner(1);
   spinner.start();
@@ -228,5 +229,5 @@ int main(int argc, char **argv)
   place(group);
 
   ros::waitForShutdown();
-  return 0;
+  return 0;*/
 }

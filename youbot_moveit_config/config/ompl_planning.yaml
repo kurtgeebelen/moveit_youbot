@@ -36,6 +36,7 @@ arm_1:
     - PRMstarkConfigDefault
   projection_evaluator: joints(arm_joint_1,arm_joint_2)
   longest_valid_segment_fraction: 0.05
+  default_planner_config: RRTConnectkConfigDefault
 arm_1_gripper:
   planner_configs:
     - SBLkConfigDefault
@@ -51,3 +52,4 @@ arm_1_gripper:
     - PRMstarkConfigDefault
   projection_evaluator: joints(gripper_finger_joint_l,gripper_finger_joint_r)
   longest_valid_segment_fraction: 0.05
+  default_planner_config: RRTConnectkConfigDefault

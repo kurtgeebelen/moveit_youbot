@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(youbot_moveit_tutorials)
 
+set (CMAKE_CXX_STANDARD 11)
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -9,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS moveit_core moveit_ros_planning moveit_r
 find_package(Boost REQUIRED system filesystem date_time thread)
 
 catkin_package(
-  CATKIN_DEPENDS 
+  CATKIN_DEPENDS
     moveit_core
     moveit_ros_planning_interface
     interactive_markers

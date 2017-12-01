@@ -3,7 +3,7 @@
 
 // ROS includes
 #include <moveit_msgs/KinematicSolverInfo.h>
-#include <moveit_msgs/GetKinematicSolverInfo.h>
+#include <moveit_msgs/KinematicSolverInfo.h>
 #include <kdl/chainfksolver.hpp>
 #include <urdf/model.h>
 
@@ -31,7 +31,7 @@ class ForwardKinematics : public KDL::ChainFkSolverPos
 			int segmentNr = -1) = 0;
 
 		/**
-		 * @brief A method to get chain information about the serial chain that the FK operates on 
+		 * @brief A method to get chain information about the serial chain that the FK operates on
 		 * @param info This class gets populated with information about the joints that FK operates on, including joint names and limits.
 		 */
 		virtual void getSolverInfo(moveit_msgs::KinematicSolverInfo &info) const = 0;

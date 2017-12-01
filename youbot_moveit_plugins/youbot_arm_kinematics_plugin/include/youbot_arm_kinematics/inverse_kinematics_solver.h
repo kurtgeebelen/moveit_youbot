@@ -37,7 +37,7 @@
 #include <Eigen/Core>
 #include <kdl/chainiksolver.hpp>
 #include <youbot_arm_kinematics/pr2_arm_kinematics_utils.h>
-#include <moveit_msgs/GetKinematicSolverInfo.h>
+#include <moveit_msgs/KinematicSolverInfo.h>
 #include <moveit_msgs/PositionIKRequest.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <tf_conversions/tf_kdl.h>

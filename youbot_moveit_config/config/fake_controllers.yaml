@@ -1,5 +1,6 @@
 controller_list:
   - name: fake_arm_1_controller
+    type: last point
     joints:
       - arm_joint_1
       - arm_joint_2
@@ -7,6 +8,7 @@ controller_list:
       - arm_joint_4
       - arm_joint_5
   - name: fake_arm_1_gripper_controller
+    type: last point
     joints:
       - gripper_finger_joint_l
       - gripper_finger_joint_r

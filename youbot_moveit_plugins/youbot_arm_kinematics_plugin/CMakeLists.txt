@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(youbot_arm_kinematics_plugin)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
+set (CMAKE_CXX_STANDARD 11)
+
 set(CMAKE_EXE_LINKER_FLAGS "--no-as-needed")
 
 find_package(catkin REQUIRED COMPONENTS
@@ -51,6 +52,6 @@ install(TARGETS youbot_arm_kinematics_plugin LIBRARY DESTINATION ${CATKIN_PACKAG
 
 install(FILES
    youbot_arm_kinematics_plugins.xml
-   DESTINATION 
+   DESTINATION
    ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
