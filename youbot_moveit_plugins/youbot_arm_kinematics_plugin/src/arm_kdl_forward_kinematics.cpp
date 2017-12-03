@@ -1,11 +1,11 @@
 #include <youbot_arm_kinematics/arm_kdl_forward_kinematics.h>
 
 // ROS includes
-#include <youbot_arm_kinematics/pr2_arm_kinematics_utils.h>
 #include <kdl/chainfksolverpos_recursive.hpp>
 
 // Package includes
 #include <youbot_arm_kinematics/solver_info_processor.h>
+#include <youbot_arm_kinematics/pr2_arm_kinematics_utils.h>
 
 
 ArmKdlForwardKinematics::ArmKdlForwardKinematics(const urdf::Model &robot_model,

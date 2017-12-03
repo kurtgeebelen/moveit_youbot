@@ -35,7 +35,6 @@
 #include <geometry_msgs/PoseStamped.h>
 #include <kdl_parser/kdl_parser.hpp>
 #include <tf_conversions/tf_kdl.h>
-#include <youbot_arm_kinematics/pr2_arm_kinematics_utils.h>
 #include "ros/ros.h"
 #include <algorithm>
 #include <numeric>
@@ -44,6 +43,7 @@
 #include <youbot_arm_kinematics/arm_kdl_forward_kinematics.h>
 #include <youbot_arm_kinematics/arm_analytical_inverse_kinematics.h>
 #include <youbot_arm_kinematics/inverse_kinematics_solver.h>
+#include <youbot_arm_kinematics/pr2_arm_kinematics_utils.h>
 
 #include <pluginlib/class_list_macros.h>
 
@@ -143,7 +143,7 @@ bool ArmKinematicsPlugin::getPositionIK(const geometry_msgs::Pose &ik_pose,
 	}
 
 	KDL::Frame pose_desired;
-	tf::PoseMsgToKDL(ik_pose, pose_desired);
+	tf::poseMsgToKDL(ik_pose, pose_desired);
 
 	//Do the IK
 	KDL::JntArray jnt_pos_in;
@@ -188,7 +188,7 @@ bool ArmKinematicsPlugin::searchPositionIK(const geometry_msgs::Pose &ik_pose,
 	}
 
 	KDL::Frame pose_desired;
-	tf::PoseMsgToKDL(ik_pose, pose_desired);
+	tf::poseMsgToKDL(ik_pose, pose_desired);
 
 	//Do the IK
 	KDL::JntArray jnt_pos_in;
@@ -236,7 +236,7 @@ bool ArmKinematicsPlugin::searchPositionIK(const geometry_msgs::Pose &ik_pose,
 		return false;
 	}
 	KDL::Frame pose_desired;
-	tf::PoseMsgToKDL(ik_pose, pose_desired);
+	tf::poseMsgToKDL(ik_pose, pose_desired);
 
 	//Do the IK
 	KDL::JntArray jnt_pos_in;
@@ -284,7 +284,7 @@ void ArmKinematicsPlugin::desiredPoseCallback(const KDL::JntArray& jnt_array,
 	}
 
 	geometry_msgs::Pose ik_pose_msg;
-	tf::PoseKDLToMsg(ik_pose, ik_pose_msg);
+	tf::poseKDLToMsg(ik_pose, ik_pose_msg);
 
 	_desiredPoseCallback(ik_pose_msg, ik_seed_state, int_error_code);
 	if (int_error_code) {
@@ -305,7 +305,7 @@ void ArmKinematicsPlugin::jointSolutionCallback(const KDL::JntArray& jnt_array,
 	}
 
 	geometry_msgs::Pose ik_pose_msg;
-	tf::PoseKDLToMsg(ik_pose, ik_pose_msg);
+	tf::poseKDLToMsg(ik_pose, ik_pose_msg);
 
 	_solutionCallback(ik_pose_msg, ik_seed_state, int_error_code);
 	if (int_error_code > 0) {
@@ -340,7 +340,7 @@ bool ArmKinematicsPlugin::searchPositionIK(const geometry_msgs::Pose &ik_pose,
 	}
 
 	KDL::Frame pose_desired;
-	tf::PoseMsgToKDL(ik_pose, pose_desired);
+	tf::poseMsgToKDL(ik_pose, pose_desired);
 
 	//Do the IK
 	KDL::JntArray jnt_pos_in;
@@ -418,7 +418,7 @@ bool ArmKinematicsPlugin::getPositionFK(
 				_fk_solver->getSegmentIndex(link_names[i]));
 		if (_fk_solver->JntToCart(jnt_pos_in, p_out,
 				_fk_solver->getSegmentIndex(link_names[i])) >= 0) {
-			tf::PoseKDLToMsg(p_out, poses[i]);
+			tf::poseKDLToMsg(p_out, poses[i]);
 		} else {
 			ROS_ERROR("Could not compute FK for %s", link_names[i].c_str());
 			valid = false;

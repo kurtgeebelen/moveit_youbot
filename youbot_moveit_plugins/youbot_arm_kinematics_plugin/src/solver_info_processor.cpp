@@ -8,7 +8,7 @@ SolverInfoProcessor::SolverInfoProcessor(const urdf::Model &robot_model,
 	const std::string &root_name)
 {
 	// setup the IK solver information which contains joint names, joint limits and so on
-	boost::shared_ptr<const urdf::Link> link = robot_model.getLink(tip_name);
+	urdf::LinkConstSharedPtr link = robot_model.getLink(tip_name);
 	while (link) {
 		// check if we have already reached the final link
 		if (link->name == root_name) break;
@@ -21,7 +21,7 @@ SolverInfoProcessor::SolverInfoProcessor(const urdf::Model &robot_model,
 		}
 
 		// process the joint
-		boost::shared_ptr<const urdf::Joint> joint = robot_model.getJoint(link->parent_joint->name);
+		urdf::JointConstSharedPtr joint = robot_model.getJoint(link->parent_joint->name);
 		if (!joint) {
 			ROS_ERROR("Could not find joint: %s", link->parent_joint->name.c_str());
 			ROS_ASSERT(false);
@@ -57,7 +57,7 @@ moveit_msgs::KinematicSolverInfo SolverInfoProcessor::getSolverInfo() const
 }
 
 
-void SolverInfoProcessor::addJointToChainInfo(boost::shared_ptr<const urdf::Joint> joint, moveit_msgs::KinematicSolverInfo &info)
+void SolverInfoProcessor::addJointToChainInfo(urdf::JointConstSharedPtr joint, moveit_msgs::KinematicSolverInfo &info)
 {
 	moveit_msgs::JointLimits limit;
 	info.joint_names.push_back(joint->name);//Joints are coming in reverse order

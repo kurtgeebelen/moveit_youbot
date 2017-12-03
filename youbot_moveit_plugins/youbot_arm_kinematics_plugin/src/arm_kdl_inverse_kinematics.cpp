@@ -1,13 +1,13 @@
 #include <youbot_arm_kinematics/arm_kdl_inverse_kinematics.h>
 
 // ROS includes
-#include <youbot_arm_kinematics/pr2_arm_kinematics_utils.h>
 #include <kdl/chainfksolverpos_recursive.hpp>
 #include <kdl/chainiksolvervel_pinv.hpp>
 #include <kdl/chainiksolverpos_nr_jl.hpp>
 
 // Package includes
 #include <youbot_arm_kinematics/solver_info_processor.h>
+#include <youbot_arm_kinematics/pr2_arm_kinematics_utils.h>
 
 
 ArmKdlInverseKinematics::ArmKdlInverseKinematics(const urdf::Model &robot_model,

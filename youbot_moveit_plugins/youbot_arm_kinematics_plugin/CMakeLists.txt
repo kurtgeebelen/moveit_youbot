@@ -17,8 +17,6 @@ find_package(catkin REQUIRED COMPONENTS
   tf_conversions
   eigen_conversions
   control_msgs
-  pr2_mechanism_msgs
-  pr2_controllers_msgs
 )
 
 find_package(Eigen3 REQUIRED)

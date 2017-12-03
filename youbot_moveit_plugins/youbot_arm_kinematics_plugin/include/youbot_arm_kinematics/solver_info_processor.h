@@ -33,7 +33,7 @@ class SolverInfoProcessor
 		 * @param joint The joint in URDF description.
 		 * @param info The information about the IK solver which will be extended.
 		 */
-		void addJointToChainInfo(boost::shared_ptr<const urdf::Joint> joint, moveit_msgs::KinematicSolverInfo &info);
+		void addJointToChainInfo(urdf::JointConstSharedPtr joint, moveit_msgs::KinematicSolverInfo &info);
 
 
 	private:
