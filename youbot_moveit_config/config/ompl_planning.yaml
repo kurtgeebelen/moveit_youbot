@@ -35,7 +35,7 @@ arm_1:
     - PRMkConfigDefault
     - PRMstarkConfigDefault
   projection_evaluator: joints(arm_joint_1,arm_joint_2)
-  longest_valid_segment_fraction: 0.05
+  longest_valid_segment_fraction: 0.25
   default_planner_config: RRTConnectkConfigDefault
 arm_1_gripper:
   planner_configs:
